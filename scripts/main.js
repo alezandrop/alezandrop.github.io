@@ -17,17 +17,15 @@ var miBoton = document.querySelector('button');
 var miTitulo = document.querySelector( 'h1');
 
 function estableceNombreUsuario() {
-    var miNombre = prompt('Por favor, ingresa tu nombre.');
-    localStorage.setItem('nombre', miNombre);
-    miTitulo.textContent = 'Bienvenido,' + miNombre;
+    let miNombre = prompt('Introduzca su nombre.');
+if (!miNombre) {
+	estableceNombreUsuario();
+} else {
+	localStorage.setItem('nombre', miNombre);
+	miTitulo.innerHTML = 'Mozilla is genial, ' + miNombre;
+  }
 }
-if (!localStorage.getItem('nombre')) {
-    estableceNombreUsuario();
-}
-else {
-    var nombreAlmacenado = localStorage.getItem('nombre');
-    miTitulo.textContent = 'Bienvenido,' + nombreAlmacenado;
-}
+	
 miBoton.onclick = function() {
     estableceNombreUsuario();
 }
